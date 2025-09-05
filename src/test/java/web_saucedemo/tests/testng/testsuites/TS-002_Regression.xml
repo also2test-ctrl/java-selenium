@@ -6,6 +6,7 @@
             <class name="web_saucedemo.tests.testng.testcases.TC002_AddToCart_Count"></class>
             <class name="web_saucedemo.tests.testng.testcases.TC003_LockedOutUser"></class>
             <class name="web_saucedemo.tests.testng.testcases.TC004_Logout"></class>
+            <class name="web_saucedemo.tests.testng.testcases.TC005_SortingFunctionality"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
