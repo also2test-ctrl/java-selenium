@@ -13,6 +13,7 @@ public class TC001_AddToCart_Checkout extends BaseTest {
     // TODO: Data provider
     String dtUsername = "standard_user";
     String dtPassword = "secret_sauce";
+    String testDescription = "Add to cart and checkout test";
 
     String prod1 = "Sauce Labs Onesie";
     String prod2 = "Test.allTheThings() T-Shirt (Red)";
