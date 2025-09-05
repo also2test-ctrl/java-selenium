@@ -26,12 +26,12 @@ public class TC001_AddToCart_Checkout extends BaseTest {
         dtYourInfo.setLastName("Doe");
         dtYourInfo.setZip("3000");
 
-        new LoginPage(driver).login(dtUsername, dtPassword);
-        new ProductsPage(driver)
+        new LoginPage(page).login(dtUsername, dtPassword);
+        new ProductsPage(page)
                 .add(prod1)
                 .add(prod2);
 
-        CheckoutPage pgCheckout = new ShoppingCartPage(driver)
+        CheckoutPage pgCheckout = new ShoppingCartPage(page)
                 .open()
                 .checkout()
                 .setInformation(dtYourInfo)

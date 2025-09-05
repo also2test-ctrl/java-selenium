@@ -1,36 +1,32 @@
 package web_saucedemo.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.microsoft.playwright.Page;
 
 public class LoginPage extends BasePage {
 
     private static final String ERR_LOCKED_OUT = "Epic sadface: Sorry, this user has been locked out.";
 
-    By txtUsername = By.id("user-name");
-    By txtPassword = By.id("password");
-    By btnLogin = By.id("login-button");
-    By lblErrMsg = By.xpath("//div[contains(@class,'error-message-container')]/h3");
+    private final String txtUsername = "#user-name";
+    private final String txtPassword = "#password";
+    private final String btnLogin = "#login-button";
+    private final String lblErrMsg = "[data-test='error']";
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
+    public LoginPage(Page page) {
+        super(page);
     }
 
     public boolean isAt() {
-        return driver.findElement(txtUsername).isDisplayed();
+        return page.locator(txtUsername).isVisible();
     }
 
     public boolean isUserLockedOut() {
-        String error = driver.findElement(lblErrMsg).getText();
-        if(error.equals(ERR_LOCKED_OUT)) {
-            return true;
-        }
-        return false;
+        String error = page.locator(lblErrMsg).textContent();
+        return ERR_LOCKED_OUT.equals(error);
     }
 
     public void login(String username, String password) {
-        driver.findElement(txtUsername).sendKeys(username);
-        driver.findElement(txtPassword).sendKeys(password);
-        driver.findElement(btnLogin).click();
+        page.locator(txtUsername).fill(username);
+        page.locator(txtPassword).fill(password);
+        page.locator(btnLogin).click();
     }
 }

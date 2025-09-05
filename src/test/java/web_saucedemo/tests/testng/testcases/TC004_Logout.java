@@ -14,10 +14,10 @@ public class TC004_Logout extends BaseTest {
 
     @Test
     public void TC004_Logout() {
-        LoginPage pgLogin = new LoginPage(driver);
+        LoginPage pgLogin = new LoginPage(page);
         pgLogin.login(dtUsername, dtPassword);
 
-        new HeaderPage(driver).navigateToMenu(AppMenu.LOGOUT);
+        new HeaderPage(page).navigateToMenu(AppMenu.LOGOUT);
         Assert.assertTrue(pgLogin.isAt());
     }
 }

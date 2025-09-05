@@ -1,38 +1,34 @@
 package web_saucedemo.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Page;
 
 public class ShoppingCartPage extends BasePage {
 
-    By lstProduct = By.xpath("//div[contains(@class,'cart_list')]/div[contains(@class,'cart_item')]");
-    By lstProduct_title = By.xpath(".//a[contains(@id,'title_link')]");
-    By btnCart = By.id("shopping_cart_container");
+    private final String lstProduct = ".cart_item";
+    private final String lstProduct_title = "[data-test*='title-link']";
+    private final String btnCart = "#shopping_cart_container";
 
-    public ShoppingCartPage(WebDriver driver) {
-        super(driver);
+    public ShoppingCartPage(Page page) {
+        super(page);
     }
 
-    private WebElement getProduct(String title) {
-        return driver.findElements(lstProduct)
-                .stream()
-                .filter(element -> element.findElement(lstProduct_title).getText().equals(title))
-                .findFirst()
-                .orElseThrow();
+    private Locator getProduct(String title) {
+        return page.locator(lstProduct)
+                .filter(new Locator.FilterOptions().setHasText(title));
     }
 
     public boolean isProductInCart(String title) {
-        return getProduct(title).isDisplayed();
+        return getProduct(title).isVisible();
     }
 
     public ShoppingCartPage open() {
-        driver.findElement(btnCart).click();
+        page.locator(btnCart).click();
         return this;
     }
 
     public CheckoutPage checkout() {
-        driver.findElement(By.id("checkout")).click();
-        return new CheckoutPage(driver);
+        page.locator("#checkout").click();
+        return new CheckoutPage(page);
     }
 }

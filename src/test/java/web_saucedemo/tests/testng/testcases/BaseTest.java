@@ -1,31 +1,36 @@
 package web_saucedemo.tests.testng.testcases;
 
 import automation.enums.Browsers;
-import automation.selenium.BrowserFactory;
-import org.openqa.selenium.WebDriver;
+import automation.playwright.PlaywrightFactory;
+import com.microsoft.playwright.*;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import web_saucedemo.config.EnvironmentVariables;
 
-import java.time.Duration;
-
 public abstract class BaseTest {
 
-    // TODO: Externalise config data
-    protected WebDriver driver;
-    private Browsers browser = Browsers.CHROME;
+    protected Browser browser;
+    protected BrowserContext context;
+    protected Page page;
+    private Browsers browserType = Browsers.CHROME;
     private String url = "https://www.saucedemo.com/";
 
     @BeforeMethod
     public void setup() {
-        driver = BrowserFactory.launch(browser);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(EnvironmentVariables.WAIT_IMPLICIT));
-        driver.manage().window().maximize();
-        driver.get(url);
+        browser = PlaywrightFactory.launch(browserType);
+        context = browser.newContext();
+        page = context.newPage();
+        page.setDefaultTimeout(EnvironmentVariables.WAIT_IMPLICIT * 1000);
+        page.navigate(url);
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (context != null) {
+            context.close();
+        }
+        if (browser != null) {
+            browser.close();
+        }
     }
 }

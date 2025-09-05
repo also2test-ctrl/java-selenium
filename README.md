@@ -1,68 +1,107 @@
-# java-selenium 
-This project demonstrates the use of Selenium WebDriver with Java to automate a simple web application.
-
+# java-playwright
+This project demonstrates the use of Microsoft Playwright with Java to automate web application testing using the Page Object Model pattern and TestNG framework.
 
 ## 🚀 Getting Started
 
 ### 🚧 Prerequisites
-Before you can run this project, you must have the following software installed on your computer:
+Before you can run this project, you must have the following software installed:
 
 - Java Development Kit (JDK) version 11 or later
-- Apache Maven
-- Google Chrome web browser
+- Apache Maven 3.6 or later
+- Internet connection (for Playwright browser downloads)
 
 ### 🔗 Dependencies
+This project uses the following main dependencies:
 
-This project uses the following dependencies:
-
-- Selenium Java version 4.12.1
+- Microsoft Playwright for Java version 1.40.0
 - TestNG version 7.7.0
 
 ### 🛠️ Installation
-1. Clone this repository to your local machine.   
+1. Clone this repository to your local machine:
    ```sh
-   git clone https://github.com/marizala/java-selenium.git
+   git clone https://github.com/also2test-ctrl/java-selenium.git
+   cd java-selenium
    ```
-2. Navigate to the project directory using the command line.
-3. Install the dependencies and run the smoke test plan (configured).   
+
+2. Install Maven dependencies and download Playwright browsers:
    ```sh
    mvn clean install
+   mvn exec:java -e -D exec.mainClass=com.microsoft.playwright.CLI -D exec.args="install"
    ```
 
-### 🌐 Application under test
-* https://www.saucedemo.com/ <br/>
-  Note that this website is being used for testing purposes, and I, the tester, acknowledge that I do not own or have any rights to this website. 
-  Testing activities are for demo purposes only.
-### 👨🏼‍🔬Tests
+### 🌐 Application Under Test
+* https://www.saucedemo.com/
+  Note: This website is used for testing purposes only. Testing activities are for demonstration purposes.
 
-This project contains 4 sample test cases that demonstrate how to use Selenium to interact with web pages. 
+### 👨🏼‍🔬 Tests
+This project contains 4 sample test cases demonstrating Playwright automation capabilities:
 
 #### 🧪 Test Cases
-- `TC001_AddToCart_Checkout`: Adds product to the cart and verifies that checkout is successful.
-- `TC002_AddToCart_Count`: Adds product to the cart and verifies that basket counter is correct.
-- `TC003_LockedOutUser`: Invalid login and verifies that an error message is displayed.
-- `TC004_Logout`: User successfully logging in and out of the application.
+- `TC001_AddToCart_Checkout`: Adds products to cart and verifies successful checkout
+- `TC002_AddToCart_Count`: Adds product to cart and verifies cart counter accuracy
+- `TC003_LockedOutUser`: Tests invalid login and verifies error message display
+- `TC004_Logout`: Tests successful login and logout functionality
 
 #### 📝 Test Plans
-- `TP-001_SmokeTest.xml`: Includes one test case that covers the basic functionality of the web app.
-- `TP-002_Regression.xml`: Includes set of test cases that checks for overall stability and functionality of the existing features. 
+- `TS-001_SmokeTest.xml`: Basic functionality smoke test suite
+- `TS-002_Regression.xml`: Comprehensive regression test suite with parallel execution
 
+### 🏃🏽 How to Run Tests
 
-#### 🏃🏽How to run the tests
-
-#### 🚦 Running a test case
-1. Navigate to the project directory using command line.
-2. Run the following command but replace `<test_case>` with the name of the test case.   
+#### 🚦 Running Individual Test Cases
+1. Navigate to the project directory:
    ```sh
-   mvn test -Dtest=<test_case>
-   ```  
-   E.g. `mvn test -Dtest=TC004_Logout`
-
-#### 🚦 Running a test plan
-1. Navigate to the project directory using command line.
-2. Run the following command but replace `<test_plan>` with the file path of the test suite xml files.  
-   ```sh
-   mvn test -DsuiteXmlFiles=<test_plan>
+   cd java-selenium
    ```
-   E.g. `mvn test -DsuiteXmlFiles=src/test/java/web_saucedemo/tests/testng/testplans/TP-002_Regression.xml`
+2. Run a specific test case:
+   ```sh
+   mvn test -Dtest=<test_case_name>
+   ```
+   Example: `mvn test -Dtest=TC004_Logout`
+
+#### 🚦 Running Test Suites
+1. Run smoke test suite:
+   ```sh
+   mvn test -DsuiteXmlFiles=src/test/java/web_saucedemo/tests/testng/testsuites/TS-001_SmokeTest.xml
+   ```
+2. Run regression test suite:
+   ```sh
+   mvn test -DsuiteXmlFiles=src/test/java/web_saucedemo/tests/testng/testsuites/TS-002_Regression.xml
+   ```
+
+### 🎭 Playwright Features
+- **Cross-browser testing**: Chrome, Firefox, Edge support
+- **Modern locators**: CSS selectors and data-test attributes
+- **Auto-waiting**: Built-in smart waiting for elements
+- **Browser contexts**: Isolated test execution
+- **Headless/headed modes**: Configurable browser visibility
+
+### 🏗️ Project Structure
+```
+src/test/java/
+├── automation/
+│   ├── enums/Browsers.java
+│   └── playwright/PlaywrightFactory.java
+└── web_saucedemo/
+    ├── config/EnvironmentVariables.java
+    ├── contexts/CheckoutYourInfoData.java
+    ├── enums/AppMenu.java
+    ├── pages/
+    │   ├── BasePage.java
+    │   ├── LoginPage.java
+    │   ├── ProductsPage.java
+    │   ├── ShoppingCartPage.java
+    │   ├── CheckoutPage.java
+    │   └── HeaderPage.java
+    └── tests/testng/
+        ├── testcases/
+        │   ├── BaseTest.java
+        │   ├── TC001_AddToCart_Checkout.java
+        │   ├── TC002_AddToCart_Count.java
+        │   ├── TC003_LockedOutUser.java
+        │   └── TC004_Logout.java
+        └── testsuites/
+            ├── TS-001_SmokeTest.xml
+            └── TS-002_Regression.xml
+```
 

@@ -1,35 +1,34 @@
 package web_saucedemo.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import com.microsoft.playwright.Page;
 import web_saucedemo.contexts.CheckoutYourInfoData;
 
 public class CheckoutPage extends BasePage {
 
-    By txtFName = By.id("first-name");
-    By txtLName = By.id("last-name");
-    By txtZip = By.id("postal-code");
-    By btnContinue = By.id("continue");
-    By btnFinish = By.id("finish");
+    private final String txtFName = "#first-name";
+    private final String txtLName = "#last-name";
+    private final String txtZip = "#postal-code";
+    private final String btnContinue = "#continue";
+    private final String btnFinish = "#finish";
 
-    protected CheckoutPage(WebDriver driver) {
-        super(driver);
+    protected CheckoutPage(Page page) {
+        super(page);
     }
 
     public boolean isCheckoutComplete() {
-        return driver.findElement(By.id("checkout_complete_container")).isDisplayed();
+        return page.locator("#checkout_complete_container").isVisible();
     }
 
     public CheckoutPage setInformation(CheckoutYourInfoData data) {
-        driver.findElement(txtFName).sendKeys(data.getFirstName());
-        driver.findElement(txtLName).sendKeys(data.getLastName());
-        driver.findElement(txtZip).sendKeys(data.getZip());
-        driver.findElement(btnContinue).click();
+        page.locator(txtFName).fill(data.getFirstName());
+        page.locator(txtLName).fill(data.getLastName());
+        page.locator(txtZip).fill(data.getZip());
+        page.locator(btnContinue).click();
         return this;
     }
 
     public CheckoutPage finish() {
-        driver.findElement(btnFinish).click();
+        page.locator(btnFinish).click();
         return this;
     }
 }

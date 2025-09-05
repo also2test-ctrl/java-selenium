@@ -1,12 +1,12 @@
 package web_saucedemo.pages;
 
-import org.openqa.selenium.WebDriver;
+import com.microsoft.playwright.Page;
 
 public abstract class BasePage {
 
-    protected final WebDriver driver;
+    protected final Page page;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public BasePage(Page page) {
+        this.page = page;
     }
 }

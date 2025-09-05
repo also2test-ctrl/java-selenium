@@ -12,7 +12,7 @@ public class TC003_LockedOutUser extends BaseTest {
 
     @Test
     public void TC002_LockedOutUser() {
-        LoginPage pgLogin = new LoginPage(driver);
+        LoginPage pgLogin = new LoginPage(page);
         pgLogin.login(dtUsername, dtPassword);
         Assert.assertTrue(pgLogin.isUserLockedOut());
     }
