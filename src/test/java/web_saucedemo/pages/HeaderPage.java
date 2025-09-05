@@ -22,16 +22,30 @@ public class HeaderPage extends BasePage {
 
     public HeaderPage navigateToMenu(AppMenu menu) {
         driver.findElement(btnMenu).click();
-
+        
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EnvironmentVariables.WAIT_MAX));
-        wait.until(ExpectedConditions.elementToBeClickable(navMenu));
-
-        WebElement btnMenu = driver.findElements(navMenu)
-                .stream()
-                .filter(element -> element.getText().equalsIgnoreCase(menu.value()))
-                .findFirst()
-                .orElseThrow();
-        btnMenu.click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(navMenu));
+        
+        By menuSelector;
+        switch (menu.value()) {
+            case "Logout":
+                menuSelector = By.id("logout_sidebar_link");
+                break;
+            case "All Items":
+                menuSelector = By.id("inventory_sidebar_link");
+                break;
+            case "About":
+                menuSelector = By.id("about_sidebar_link");
+                break;
+            case "Reset App State":
+                menuSelector = By.id("reset_sidebar_link");
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown menu item: " + menu.value());
+        }
+        
+        WebElement menuItem = wait.until(ExpectedConditions.presenceOfElementLocated(menuSelector));
+        ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", menuItem);
         return this;
     }
 
