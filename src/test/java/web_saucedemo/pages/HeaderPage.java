@@ -22,7 +22,15 @@ public class HeaderPage extends BasePage {
     }
 
     public int getCartCount() {
-        String count = page.locator(lblCart + " .shopping_cart_badge").textContent();
-        return count == null || count.isEmpty() ? 0 : Integer.parseInt(count);
+        try {
+            if (page.locator(lblCart + " .shopping_cart_badge").count() > 0) {
+                String count = page.locator(lblCart + " .shopping_cart_badge").textContent();
+                return count == null || count.isEmpty() ? 0 : Integer.parseInt(count);
+            } else {
+                return 0;
+            }
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
