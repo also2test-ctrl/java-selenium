@@ -27,6 +27,18 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
+    public CheckoutPage fillYourInfo(CheckoutYourInfoData data) {
+        page.locator(txtFName).fill(data.getFirstName());
+        page.locator(txtLName).fill(data.getLastName());
+        page.locator(txtZip).fill(data.getZip());
+        return this;
+    }
+
+    public CheckoutPage clickContinue() {
+        page.locator(btnContinue).click();
+        return this;
+    }
+
     public CheckoutPage finish() {
         page.locator(btnFinish).click();
         return this;

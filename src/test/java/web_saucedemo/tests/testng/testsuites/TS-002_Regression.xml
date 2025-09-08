@@ -8,6 +8,10 @@
             <class name="web_saucedemo.tests.testng.testcases.TC004_Logout"></class>
             <class name="web_saucedemo.tests.testng.testcases.TC005_SortingFunctionality"></class>
             <class name="web_saucedemo.tests.testng.testcases.TC006_ShoppingCartStability"></class>
+            <class name="web_saucedemo.tests.testng.testcases.TC007_ProductManagement"></class>
+            <class name="web_saucedemo.tests.testng.testcases.TC011_CartContentValidation"></class>
+            <class name="web_saucedemo.tests.testng.testcases.TC014_CartCounterValidation"></class>
+            <class name="web_saucedemo.tests.testng.testcases.TC018_CartSizeLimit"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->

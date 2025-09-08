@@ -6,6 +6,14 @@ public class CheckoutYourInfoData {
     private String lastName;
     private String zip;
 
+    public CheckoutYourInfoData() {}
+
+    public CheckoutYourInfoData(String firstName, String lastName, String zip) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.zip = zip;
+    }
+
     public String getFirstName() {
         return firstName;
     }
