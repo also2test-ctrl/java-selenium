@@ -1,0 +1,180 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "Introduce the java-selenium automated testing framework, summarizing its purpose, target application (SauceDemo), and core technologies",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started",
+      "purpose": "Provide setup instructions, installation requirements, and basic usage examples for running tests",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "System Architecture",
+      "purpose": "Explain the overall architecture, design patterns (Page Object Model), and how major components interact",
+      "page_notes": [
+        {
+          "content": "Be more detailed on the design patterns"
+        }
+      ]
+    },
+    {
+      "title": "Build System",
+      "purpose": "Detail Maven configuration, dependencies, and build lifecycle management",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Test Framework",
+      "purpose": "Overview of the TestNG-based testing framework and its core components",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Test Infrastructure",
+      "purpose": "Explain the BaseTest class, WebDriver lifecycle management, and common test setup/teardown procedures",
+      "parent": "Test Framework",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Test Suites",
+      "purpose": "Document TestNG suite configurations, smoke tests vs regression tests, and parallel execution settings",
+      "parent": "Test Framework",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Browser Management",
+      "purpose": "Explain the BrowserFactory pattern, supported browsers, and WebDriver instantiation",
+      "parent": "Test Framework",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Page Object Model",
+      "purpose": "Introduction to the Page Object Model implementation and its benefits for test maintainability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Base Page Architecture",
+      "purpose": "Detail the BasePage abstraction and common page object patterns",
+      "parent": "Page Object Model",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Login and Header Components",
+      "purpose": "Document the LoginPage and HeaderPage implementations for authentication and navigation",
+      "parent": "Page Object Model",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Product and Shopping Pages",
+      "purpose": "Explain ProductsPage and ShoppingCartPage for product browsing and cart management",
+      "parent": "Page Object Model",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Checkout Process",
+      "purpose": "Document the CheckoutPage implementation for completing purchases",
+      "parent": "Page Object Model",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Test Cases",
+      "purpose": "Overview of the implemented test cases and their coverage areas",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "End-to-End Test Cases",
+      "purpose": "Detail the comprehensive test scenarios including checkout flow and cart functionality",
+      "parent": "Test Cases",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Authentication and Session Tests",
+      "purpose": "Document test cases for user authentication, locked users, and logout functionality",
+      "parent": "Test Cases",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Configuration and Data",
+      "purpose": "Explain configuration management, environment variables, and test data structures",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CI/CD Pipeline",
+      "purpose": "Document the GitHub Actions workflow for automated testing and continuous integration",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
